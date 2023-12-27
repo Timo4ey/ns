@@ -100,8 +100,6 @@ sequenceDiagram
     participant Adapter
 
 
-
-
     alt обмен статусами job
         NS ->> DB: PUT /job/status
     end
