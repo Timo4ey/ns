@@ -68,9 +68,9 @@ sequenceDiagram
     alt если client создал задачу
         Note over Client, NS: добавляем задачу в очередь
         Client ->> NS: POST /job
-        NS ->> Queue: NS.add
+        NS ->> Queue: NS.request
         
-        Adapter ->> Queue: Adapter.cbq
+        Adapter ->> Queue: Adapter.consume
     end
 
         
@@ -84,8 +84,8 @@ sequenceDiagram
     Adapter -->> User: 
 
     alt обмен статусами job
-        Adapter ->> Queue:Adapter.send_job_status(queue_name, job)
-        NS ->> Queue: NS.receive_job_status(queue_name)
+        Adapter ->> Queue:Adapter.request
+        NS ->> Queue: NS.consume
     end
 ```
 ___
@@ -104,7 +104,7 @@ sequenceDiagram
         NS ->> DB: NS.update_one()
     end
     alt изменение статуса в базе
-        Adapter ->> Queue:Adapter.send_job_status(queue_name, job)
-        NS ->> Queue: NS.receive_job_status(queue_name)
+        Adapter ->> Queue:Adapter.request
+        NS ->> Queue: NS.consume
     end
 ```
