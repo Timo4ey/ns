@@ -103,7 +103,7 @@ sequenceDiagram
     alt обновление статуса job в DB
         NS ->> DB: NS.update_one()
     end
-    alt отравка job с изменённым статусом
+    alt отправка job с изменённым статусом
         Adapter ->> Queue:Adapter.request
         NS ->> Queue: NS.consume
     end
