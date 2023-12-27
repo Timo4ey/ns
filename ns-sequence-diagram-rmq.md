@@ -104,6 +104,7 @@ sequenceDiagram
         NS ->> DB: NS.update_one()
     end
     alt отправка job с изменённым статусом
+        Note over NS, Adapter: взаимодействие через RPC
         Adapter ->> Queue:Adapter.request
         NS ->> Queue: NS.consume
     end
