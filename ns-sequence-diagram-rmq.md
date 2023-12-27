@@ -100,8 +100,8 @@ sequenceDiagram
     participant Adapter
 
 
-    alt обмен статусами job
-        NS ->> DB: PUT /job/status
+    alt обновление статуса job
+        NS ->> DB: NS.update_one()
     end
     alt изменение статуса в базе
         Adapter ->> Queue:Adapter.send_job_status(queue_name, job)
