@@ -70,7 +70,7 @@ sequenceDiagram
         Client ->> NS: POST /job
         NS ->> Queue: NS.add_job_to_queue(queue_name, job)
         
-        Adapter ->> Queue: Adapter.recieve_job(queue_name)
+        Adapter ->> Queue: Adapter.receive_job(queue_name)
     end
 
         
@@ -85,10 +85,10 @@ sequenceDiagram
 
     alt обмен статусами job
         Adapter ->> Queue:Adapter.send_job_status(queue_name, job)
-        NS ->> Queue: NS.recieve_job_status(queue_name)
+        NS ->> Queue: NS.receive_job_status(queue_name)
     end
 ```
-
+___
 
 ### Изменение статуса job
 ```mermaid
@@ -107,6 +107,6 @@ sequenceDiagram
     end
     alt изменение статуса в базе
         Adapter ->> Queue:Adapter.send_job_status(queue_name, job)
-        NS ->> Queue: NS.recieve_job_status(queue_name)
+        NS ->> Queue: NS.receive_job_status(queue_name)
     end
 ```
