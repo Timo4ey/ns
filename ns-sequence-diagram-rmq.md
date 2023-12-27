@@ -100,10 +100,10 @@ sequenceDiagram
     participant Adapter
 
 
-    alt обновление статуса job
+    alt обновление статуса job в DB
         NS ->> DB: NS.update_one()
     end
-    alt изменение статуса в базе
+    alt отравка job с изменённым статусом
         Adapter ->> Queue:Adapter.request
         NS ->> Queue: NS.consume
     end
