@@ -68,9 +68,9 @@ sequenceDiagram
     alt если client создал задачу
         Note over Client, NS: добавляем задачу в очередь
         Client ->> NS: POST /job
-        NS ->> Queue: NS.add_job_to_queue(queue_name, job)
+        NS ->> Queue: NS.add
         
-        Adapter ->> Queue: Adapter.receive_job(queue_name)
+        Adapter ->> Queue: Adapter.cbq
     end
 
         

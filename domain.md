@@ -31,12 +31,13 @@ techology {
     text name
     unknown endpoint
 }
-adapter ||--}o job : has
-notification ||--}o adapter : has
+adapter o{--|| job : has
+notification o{--|| adapter : has
 
-adapter ||--}o techology : has
+adapter o{--|| techology : has
 
-client o{--|| job : created
-client o{--|| adapter: created
-client o{--|| notification: created
+client ||--}o job : created
+client ||--}o adapter: created
+client ||--}o notification: created
+
 ```
